@@ -13,7 +13,7 @@ class DataLoader:
         
         # Pivot to one-hot encoding format
         basket = data.pivot_table(index='documentno', columns='name', aggfunc=lambda x: 1, fill_value=0)
-        self.basket = basket.applymap(lambda x: 1 if x > 0 else 0)
+        self.basket = basket.astype(bool)
 
     def get_basket(self):
         """Returns the processed transaction data."""
